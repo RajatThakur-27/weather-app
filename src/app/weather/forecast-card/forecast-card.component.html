@@ -1,0 +1,13 @@
+<div class="forecast-card">
+  <h3 class="time">
+    {{ getDate(forecastHourly.dt) }}
+  </h3>
+  <img
+    class="img"
+    src="{{ getIcon(forecastHourly.weather[0].icon) }}"
+    alt="icon"
+  />
+  <div class="forecast">{{ forecastHourly.weather[0].main }}</div>
+  <div class="temp">{{ getTemp(forecastHourly.main.temp) }}°C</div>
+  <div class="realTemp">{{ getTemp(forecastHourly.main.feels_like) }}°C</div>
+</div>

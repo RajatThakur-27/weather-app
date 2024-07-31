@@ -1,0 +1,73 @@
+<div class="main-container">
+  <header>
+    <h1 class="logo">Weather</h1>
+    <form [formGroup]="enterCity">
+      <input
+        type="text"
+        [(ngModel)]="city"
+        placeholder="Enter city"
+        (keypress)="onKeyPress($event)"
+        formControlName="cityName"
+      />
+      <span
+        class="error"
+        *ngIf="cityName?.invalid && (cityName?.dirty || cityName?.touched) && !cityName?.errors?.['required']"
+        >City is invalid</span
+      >
+      <span
+        class="error"
+        *ngIf="cityName?.errors?.['required'] && (cityName?.dirty || cityName?.touched)"
+        >Required enter city</span
+      >
+      <button (click)="getWeatherByCity(city)" [disabled]="!city">
+        Search
+      </button>
+    </form>
+  </header>
+  <div class="notFound" *ngIf="isError"></div>
+  <div
+    class="weatherToday"
+    *ngIf="(!isError && isShowToday) || (!isError && isShowFiveDay)"
+  >
+    <div class="weaterTodayHeader">
+      <div class="btns">
+        <button (click)="showOneDay()" class="{{ btn1 }}">One day</button>
+        <button (click)="showFiveDay()" class="{{ btn2 }}">Five day</button>
+      </div>
+      <h2>{{ weatherToday.name }}</h2>
+    </div>
+    <app-weather-card
+      [weatherToday]="weatherToday"
+      *ngIf="isShowToday"
+      [curOffSet]="curOffSet"
+    >
+    </app-weather-card>
+    <div class="forecast" *ngIf="isShowFiveDay">
+      <app-forecast
+        *ngFor="let forecastOneDay of forecastFiveDays"
+        [forecastOneDay]="forecastOneDay"
+        [(selectedForecast)]="selectedForecast"
+        [(isShowMoreInfo)]="isShowMoreInfo"
+        [(dayWeek)]="dayWeek"
+      ></app-forecast>
+    </div>
+    <div class="forecast-card" *ngIf="isShowMoreInfo">
+      <h3>HOURLY</h3>
+      <div class="hourly">
+        <div *ngIf="selectedForecast?.length">
+          <h3 class="time">{{ dayWeek }}</h3>
+          <div class="img"></div>
+          <div class="desc">Forecast</div>
+          <div class="temp">Temp</div>
+          <div class="realTemp">Real Feel</div>
+        </div>
+        <app-forecast-card
+          *ngFor="let forecastHourly of selectedForecast"
+          [forecastHourly]="forecastHourly"
+          [curOffSet]="curOffSet"
+        >
+        </app-forecast-card>
+      </div>
+    </div>
+  </div>
+</div>

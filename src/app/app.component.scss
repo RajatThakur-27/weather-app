@@ -1,0 +1,146 @@
+.main-container {
+  button {
+    padding: 10px 20px;
+    border: none;
+    background-color: rgb(62, 77, 90);
+    color: #fff;
+    &:hover {
+      background-color: rgb(85, 103, 118);
+    }
+  }
+  header {
+    padding: 10px 40px;
+    display: flex;
+    justify-content: space-between;
+    h1 {
+      text-shadow: rgb(255, 255, 255) 3px 0 5px;
+    }
+    form {
+      position: relative;
+      .error {
+        position: absolute;
+        top: 37px;
+        left: 10px;
+        font-size: 12px;
+        color: brown;
+      }
+      input {
+        width: 30vw;
+        padding: 10px 20px;
+        border: none;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.479);
+        box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.3);
+      }
+      button {
+        padding: 10px 20px;
+        box-shadow: 0px 0px 15px 1px rgba(255, 255, 255, 0.2);
+        &:disabled {
+          background-color: rgb(62, 77, 90);
+        }
+      }
+      @media (max-width: 640px) {
+        padding: 10px;
+        h1 {
+          font-size: 20px;
+        }
+        input,
+        button {
+          padding: 5px 20px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .notFound {
+    width: 60vw;
+    height: 60vh;
+    background: url(../assets/img/error.jpg) no-repeat center/100%;
+    margin: 20px auto;
+    opacity: 0.8;
+  }
+  .weatherToday {
+    background-color: rgba(255, 255, 255, 0.65);
+    margin: 3vh 5vw;
+    box-shadow: 0px 0px 15px 1px rgb(255, 255, 255, 0.3);
+    .weaterTodayHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(62, 77, 90);
+      color: #fff;
+      button {
+        padding: 10px 60px;
+        border-right: 1px solid rgb(85, 103, 118);
+        &.focus {
+          background-color: rgb(74, 89, 101);
+        }
+      }
+      h2 {
+        margin-right: 60px;
+      }
+      @media (max-width: 640px) {
+        button {
+          padding: 10px 20px;
+        }
+        h2 {
+          font-size: 18px;
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+  .forecast {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    app-forecast {
+      width: 20%;
+    }
+  }
+  .forecast-card {
+    border-top: 1px solid rgb(62, 77, 90);
+    padding: 20px;
+    > h3 {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .hourly {
+      display: flex;
+      align-items: stretch;
+      > div {
+        font-weight: 700;
+        width: 20%;
+        .img {
+          width: 50px;
+          height: 60px;
+        }
+        .temp {
+          margin: 10px 0;
+        }
+        @media (max-width: 700px) {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
+          width: 100%;
+          font-size: 12px;
+          .temp {
+            margin: 0 10px;
+          }
+        }
+      }
+      app-forecast-card {
+        width: 10%;
+        @media (max-width: 700px) {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 700px) {
+        flex-direction: column;
+      }
+    }
+  }
+}

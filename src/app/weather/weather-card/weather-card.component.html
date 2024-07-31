@@ -1,0 +1,29 @@
+<div *ngIf="weatherToday?.name" class="current-weather">
+  <div class="row">
+    <h3>Current weather</h3>
+    <h3>{{ getCurrentDate() }}</h3>
+  </div>
+  <div class="current-weather row">
+    <div class="clouds column">
+      <img [src]="getIcon(weatherToday.weather[0].icon)" />
+      <div>
+        {{ weatherToday.weather[0].main }}
+      </div>
+    </div>
+    <div class="temp column">
+      <div class="tempNow">{{ getTemp(weatherToday.main.temp) }}°C</div>
+      <div>Real Feel: {{ getTemp(weatherToday.main.feels_like) }}°C</div>
+    </div>
+    <div class="duration column">
+      <div>Sunrise: {{ getDate(weatherToday.sys.sunrise, curOffSet) }}</div>
+      <div class="sunset">
+        Sunset: {{ getDate(weatherToday.sys.sunset, curOffSet) }}
+      </div>
+      <div>
+        Duration:
+        {{ getDate(weatherToday.sys.sunset - weatherToday.sys.sunrise, 0) }} hr
+      </div>
+    </div>
+  </div>
+</div>
+<div class="hourly-weather"></div>

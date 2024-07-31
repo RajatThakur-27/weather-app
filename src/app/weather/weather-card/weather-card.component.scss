@@ -1,0 +1,36 @@
+.current-weather {
+  padding: 10px 40px;
+  h3 {
+    margin-top: 10px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .tempNow {
+    font-size: 40px;
+    font-weight: 500;
+  }
+  .sunset {
+    margin: 20px 0;
+  }
+  @media (max-width: 700px) {
+    padding: 10px;
+    .row {
+      flex-direction: column;
+    }
+    .column {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .sunset {
+      margin: 10px;
+    }
+  }
+}

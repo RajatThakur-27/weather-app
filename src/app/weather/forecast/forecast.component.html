@@ -1,0 +1,11 @@
+<div
+  (click)="showMoreInfo()"
+  class="forecast-container"
+  *ngIf="forecastOneDay?.length"
+>
+  <div class="day">{{ day }}</div>
+  <div class="date">{{ date }} {{ month }}</div>
+  <img [src]="icon" />
+  <div class="temp">{{ temp }}°C</div>
+  <div class="weather">{{ description }}</div>
+</div>
